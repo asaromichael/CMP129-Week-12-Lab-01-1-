@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -69,5 +71,18 @@ public class CalculatorApp extends Application {
 
     }
 
+    private class calcHandler implements EventHandler<ActionEvent> {
+        public void handle(ActionEvent event) {
+            // 1. Read the text currently in the two input boxes.
+            String firstText = first.getText();
+            String secondText = second.getText();
+            // 2. Convert the text into numeric variables.
+            double a = Double.parseDouble(firstText);
+            double b = Double.parseDouble(secondText);
+            // 3. Choose the higher score and display it in box three.
+            double higher = Math.max(a, b);
+            result.setText(String.valueOf(higher));
+        }
+    }
     
 }
